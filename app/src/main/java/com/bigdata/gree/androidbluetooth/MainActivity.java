@@ -12,6 +12,9 @@ import android.view.View;
 
 import com.bigdata.gree.androidbluetooth.util.LygLog;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Android Bluetooth蓝牙作为设备
  * 要与其他蓝牙设备互联,那么先决条件
@@ -43,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        testLogTime();
+
         //初始化蓝牙设备
         if (checkIfHasBTD()) {
             openBluetooth();
@@ -55,6 +60,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.init).setOnClickListener(this);
         findViewById(R.id.discovery).setOnClickListener(this);
         findViewById(R.id.discoverable).setOnClickListener(this);
+    }
+
+    /**
+     * 测试Log时间
+     */
+    private void testLogTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        String format = sdf.format(new Date());
+        LygLog.d(format);
     }
 
     /**
